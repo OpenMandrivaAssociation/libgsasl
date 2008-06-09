@@ -38,8 +38,12 @@ is used by network servers (e.g., IMAP, SMTP) to request
 authentication from clients, and in clients to authenticate against
 servers.
 
+%if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libname -p /sbin/ldconfig
+%endif
 
 %files -n %libname
 %defattr(-,root,root)
