@@ -1,6 +1,6 @@
 %define name	libgsasl
 %define version	0.2.9
-%define release	%mkrel 1
+%define release	%mkrel 3
 %define major 7
 %define libname %mklibname gsasl %major
 %define develname %mklibname -d gsasl
