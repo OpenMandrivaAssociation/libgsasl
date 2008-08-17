@@ -1,6 +1,6 @@
 %define name	libgsasl
-%define version	0.2.9
-%define release	%mkrel 3
+%define version	0.2.27
+%define release	%mkrel 1
 %define major 7
 %define libname %mklibname gsasl %major
 %define develname %mklibname -d gsasl
@@ -47,8 +47,8 @@ servers.
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/libgsasl.so.7
-%_libdir/libgsasl.so.7.2.5
+%_libdir/libgsasl.so.%{major}
+%_libdir/libgsasl.so.%{major}.*
 
 #--------------------------------------------------------------------
 
