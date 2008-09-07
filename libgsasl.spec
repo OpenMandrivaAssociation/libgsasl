@@ -1,5 +1,5 @@
 %define name	libgsasl
-%define version	0.2.27
+%define version	0.2.28
 %define release	%mkrel 1
 %define major 7
 %define libname %mklibname gsasl %major
@@ -9,9 +9,9 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Implementation of the Simple Authentication and Security Layer framework
-License:	GPL
+License:	LGPLv2+
 Group:		System/Libraries
-Source:		%{name}-%{version}.tar.gz
+Source:		ftp://alpha.gnu.org/pub/gnu/gsasl/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/gsasl/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
@@ -78,14 +78,14 @@ servers.
 #--------------------------------------------------------------------
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q 
 
 %build
-%configure
+%configure2_5x
 %make
 
-%install 
+%install
+rm -fr %buildroot
 %makeinstall_std
 %find_lang %name
 
