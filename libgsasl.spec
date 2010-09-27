@@ -1,5 +1,5 @@
 %define name	libgsasl
-%define version	0.2.29
+%define version	1.4.4
 %define release	%mkrel 1
 %define major 7
 %define libname %mklibname gsasl %major
@@ -11,7 +11,7 @@ Release:	%{release}
 Summary:	Implementation of the Simple Authentication and Security Layer framework
 License:	LGPLv2+
 Group:		System/Libraries
-Source:		ftp://alpha.gnu.org/pub/gnu/gsasl/%{name}-%{version}.tar.gz
+Source:		ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/gsasl/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
