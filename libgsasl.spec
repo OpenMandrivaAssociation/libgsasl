@@ -1,9 +1,10 @@
 %define name	libgsasl
-%define version	1.4.4
-%define release	%mkrel 1
+%define version	1.8.0
+%define release	1
 %define major 7
 %define libname %mklibname gsasl %major
 %define develname %mklibname -d gsasl
+%define develnamest %mklibname -d -s gsasl
 
 Name:		%{name}
 Version:	%{version}
@@ -11,9 +12,8 @@ Release:	%{release}
 Summary:	Implementation of the Simple Authentication and Security Layer framework
 License:	LGPLv2+
 Group:		System/Libraries
-Source:		ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/gsasl/
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 GNU SASL is an implementation of the Simple Authentication and 
@@ -23,8 +23,6 @@ authentication from clients, and in clients to authenticate against
 servers.
 
 %files -f %name.lang
-%defattr(-,root,root)
-
 #--------------------------------------------------------------------
 
 %package -n %libname
@@ -38,15 +36,7 @@ is used by network servers (e.g., IMAP, SMTP) to request
 authentication from clients, and in clients to authenticate against
 servers.
 
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
 %files -n %libname
-%defattr(-,root,root)
 %_libdir/libgsasl.so.%{major}
 %_libdir/libgsasl.so.%{major}.*
 
@@ -66,14 +56,30 @@ authentication from clients, and in clients to authenticate against
 servers.
 
 %files -n %develname
-%defattr(-,root,root)
 %_libdir/pkgconfig/libgsasl.pc
-%_libdir/libgsasl.a
-%_libdir/libgsasl.la
 %_libdir/libgsasl.so
 %_includedir/gsasl-compat.h
 %_includedir/gsasl-mech.h
 %_includedir/gsasl.h
+
+#-------------------------------------------------------------------
+
+%package -n %develnamest
+Group: Development/C
+Summary: Implementation of the Simple Authentication and Security Layer framework
+Requires: %libname = %version
+Provides: %name-devel-static = %version-%release
+Requires: %name-devel = %version-%release
+
+%description -n %develnamest
+GNU SASL is an implementation of the Simple Authentication and
+Security Layer framework and a few common SASL mechanisms. SASL
+is used by network servers (e.g., IMAP, SMTP) to request
+authentication from clients, and in clients to authenticate against
+servers.
+
+%files -n %develnamest
+%_libdir/libgsasl.a
 
 #--------------------------------------------------------------------
 
@@ -85,9 +91,5 @@ servers.
 %make
 
 %install
-rm -fr %buildroot
 %makeinstall_std
 %find_lang %name
-
-%clean
-rm -rf $RPM_BUILD_ROOT
