@@ -5,6 +5,8 @@
 %define libname %mklibname gsasl %major
 %define develname %mklibname -d gsasl
 
+%define _disable_rebuild_configure 1
+
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
