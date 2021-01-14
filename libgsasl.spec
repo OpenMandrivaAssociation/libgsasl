@@ -12,6 +12,10 @@ License:	LGPLv2+
 Group:		System/Libraries
 Source0:	ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/gsasl/
+BuildRequires:	pkgconfig(libidn)
+BuildRequires:	pkgconfig(mit-krb5-gssapi)
+BuildRequires:	pkgconfig(libntlm)
+BuildRequires:	pkgconfig(libgcrypt)
 
 %description
 GNU SASL is an implementation of the Simple Authentication and 
@@ -20,7 +24,7 @@ is used by network servers (e.g., IMAP, SMTP) to request
 authentication from clients, and in clients to authenticate against 
 servers.
 
-%files -f %name.lang
+%files -f %{name}.lang
 #--------------------------------------------------------------------
 
 %package -n %{libname}
@@ -44,7 +48,7 @@ servers.
 Group:		Development/C
 Summary:	Implementation of the Simple Authentication and Security Layer framework
 Requires:	%{libname} = %{EVRD}
-Provides:	%name-devel = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{develname}
 GNU SASL is an implementation of the Simple Authentication and
@@ -66,7 +70,7 @@ servers.
 %autosetup -p1
 
 %build
-%configure
+%configure --with-gssapi-impl=mit
 %make_build
 
 %install
