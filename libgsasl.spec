@@ -6,7 +6,7 @@
 
 Name:		libgsasl
 Version:	1.10.0
-Release:	1
+Release:	2
 Summary:	Implementation of the Simple Authentication and Security Layer framework
 License:	LGPLv2+
 Group:		System/Libraries
