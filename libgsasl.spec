@@ -11,7 +11,7 @@ Summary:	Implementation of the Simple Authentication and Security Layer framewor
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
-URL:		http://www.gnu.org/software/gsasl/
+URL:		https://www.gnu.org/software/gsasl/
 BuildRequires:	pkgconfig(libidn)
 BuildRequires:	pkgconfig(mit-krb5-gssapi)
 BuildRequires:	pkgconfig(libntlm)
