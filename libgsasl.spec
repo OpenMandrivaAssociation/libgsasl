@@ -12,6 +12,11 @@ License:	LGPLv2+
 Group:		System/Libraries
 Source0:	ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 URL:		https://www.gnu.org/software/gsasl/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libidn)
 BuildRequires:	pkgconfig(mit-krb5-gssapi)
 BuildRequires:	pkgconfig(libntlm)
